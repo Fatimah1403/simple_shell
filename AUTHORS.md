@@ -1,0 +1,7 @@
+# Simple_shell project in team of two.
+# Done at Alx-software programming one year training.
+# Date: Febuary 9th 2023.
+# Authors are:
+
+Fatimah Hassan <fattyhassan14@gmail.com>
+Kayode Johnson <kayodejohnson01@gmail.com> 
