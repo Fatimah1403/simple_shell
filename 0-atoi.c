@@ -20,6 +20,11 @@ int _isalphabet(int c)
  */
 int interactive(info_t *info)
 {
+	/**
+	 * isatty() is used to test weda a file descriptor (fd) is
+	 * an open fd referring to a terminal
+	*/
+
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 /**
