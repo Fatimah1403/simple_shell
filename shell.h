@@ -105,7 +105,7 @@ int _erratoi(char *);
 void print_error(info_t *, char *);
 
 /* _environ.c */
-char **get_environ(info_t *);
+char *_getenv(info_t *, const char *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
 
