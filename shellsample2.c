@@ -1,14 +1,16 @@
 #include "shell.h"
 
 
-int main()
+int main(int *count, int **characters)
 {
 	char *prompt = "Shellsample/$: ";
 	char *userinput;
+	char *userinput_copy;
+	
 	size_t usercounter = 0; // we could use size_t datatype if int does not work. 
 	ssize_t getline_failure;
 
-	while(1)
+	while(true)
 	{
 		printf("%s", prompt);
 
@@ -20,9 +22,26 @@ int main()
 			return -1;
 		}
 
-		printf("%s\n", userinput);
+		userinput_copy = malloc(sizeof(char) * getline_failure);
+		if (userinput_copy == NULL)
+		{
+			printf("Eish!, Error in Allocation");
+			return -1;
+		}
 
-//		free(userinput);   using this free here woi;d make the code break on second trial. so the buffer if freed when the code breaks or the program ends
+		strcpy(userinput_copy, userinput);
+		
+		//char delimiter = " ";
+		int *stringtok_result = strtok(userinput, " ");
+		while(stringtok_result != NULL)
+		{
+			stringtok_result = strtok(NULL, " ");
+			stringtok_result++;
+		}
+		
+		
+		printf("%s\n", userinput);
+		
 	}
 	free(userinput);
 	return 0;
