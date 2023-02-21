@@ -66,6 +66,9 @@ typedef struct liststr
  * @env: linked list local copy of environ
  * environ: custom modified copy of environ from LL env
  * @env_changed: on if environ was changed
+ * @fname: the program filename
+ * @line_count: the error count
+ * @line_count: the error count
  */
 
 
@@ -82,6 +85,11 @@ typedef struct infodetails
 	list_t *env;
 	char **environ;
 	int env_changed;
+	char *fname;
+	int linecount_flag;
+		unsigned int line_count;
+
+
 
 } info_t;
 
@@ -143,6 +151,8 @@ int _putchar(char);
 /*  error1.c */
 int _erratoi(char *);
 void print_error(info_t *, char *);
+int print_d(int, int);
+
 
 /* _environ.c */
 char *_getenv(info_t *, const char *);
