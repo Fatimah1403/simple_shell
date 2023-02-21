@@ -11,6 +11,32 @@
 #include <fcntl.h>
 #include <errno.h>
 
+
+/* for command chaining */
+#define CMD_NORM	0
+#define CMD_OR		1
+#define CMD_AND		2
+#define CMD_CHAIN	3
+
+/* for convert_number() */
+#define CONVERT_LOWERCASE	1
+#define CONVERT_UNSIGNED	2
+
+/* 1 if using system getline() */
+#define USE_GETLINE 0
+#define USE_STRTOK 0
+
+#define HIST_FILE	".simple_shell_history"
+#define HIST_MAX	4096
+
+
+/* for read/write buffers */
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
+
+extern char **environ;
+
 /**
  * struct liststr - singly linked list
  * @num: the number field
@@ -37,6 +63,9 @@ typedef struct liststr
  * @status: the return status of the last exec'd command
  * @history: the history node
  * @alias: the alias node
+ * @env: linked list local copy of environ
+ * environ: custom modified copy of environ from LL env
+ * @env_changed: on if environ was changed
  */
 
 
@@ -50,8 +79,16 @@ typedef struct infodetails
 	int status;
 	list_t *history;
 	list_t *alias;
+	list_t *env;
+	char **environ;
+	int env_changed;
 
 } info_t;
+
+
+#define INFO_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0}
 
 
 
@@ -94,6 +131,7 @@ int _eputchar(char);
 
 /*  string.c*/
 int _strcmp(char *, char *);
+char *starts_with(const char *, const char *);
 
 
 /*  string1.c*/
@@ -105,6 +143,14 @@ int _erratoi(char *);
 void print_error(info_t *, char *);
 
 /* _environ.c */
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
+int _myunsetenv(info_t *);
+int populate_env_list(info_t *);
+
+
+/* _getenv.c */
 char *_getenv(info_t *, const char *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
