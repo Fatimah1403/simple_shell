@@ -128,6 +128,8 @@ int unset_alias(info_t *info, char *str);
 /*  error.c*/
 void _eputs(char *);
 int _eputchar(char);
+int _putfd(char c, int fd);
+int _putsfd(char *str, int fd);
 
 /*  string.c*/
 int _strcmp(char *, char *);
