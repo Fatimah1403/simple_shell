@@ -142,6 +142,7 @@ char *_strncat(char *, char *, int);
 int interactive(info_t *);
 int _isalphabet(int);
 int _atoi(char *);
+int is_delim(char, char *);
 
 /* prototypes for builtin.c */
 
@@ -198,6 +199,7 @@ char **strtow2(char *, char);
 char *_getenv(info_t *, const char *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
+char **get_environ(info_t *);
 
 /* _lists.c */
 list_t *add_node(list_t **, const char *, int);
