@@ -55,7 +55,7 @@ typedef struct liststr
 /**
  * struct infodetails - contains the infomations passed to the funtions
  * containing prototype and pointers.
- *
+ * @path: a string path for the current command
  * @readfd: the fd to read line input
  * @arg: a string generated from getline containing arguements
  * @argv: an array of strings generated from arg
@@ -94,6 +94,7 @@ typedef struct infodetails
 	int linecount_flag;
 	unsigned int line_count;
 	int histcount;
+	char *path;
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 
@@ -175,6 +176,10 @@ int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
+/* toem_tokenizer.c */
+char **strtow(char *, char *);
+char **strtow2(char *, char);
+
 
 /* _getenv.c */
 char *_getenv(info_t *, const char *);
@@ -200,11 +205,18 @@ ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
 
+/* toem_getinfo.c */
+void clear_info(info_t *);
+void set_info(info_t *, char **);
+void free_info(info_t *, int);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
+
+/* toem_memory.c */
+int bfree(void **);
 
 /* _history.c */
 int build_history_list(info_t *info, char *buf, int linecount);
