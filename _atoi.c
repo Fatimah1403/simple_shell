@@ -1,18 +1,6 @@
 #include "shell.h"
 
 /**
- * _isalphabet - a function to check for alphabet characters
- * @c: The characters to check for
- * Return: 1 if c is alpbet and 0 if not.
- */
-int _isalphabet(int c)
-{
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	else
-		return (0);
-}
-/**
  * interactive - returns true if shell is interactive mode
  * @info: struct address
  *
@@ -20,13 +8,37 @@ int _isalphabet(int c)
  */
 int interactive(info_t *info)
 {
-	/**
-	 * isatty() is used to test weda a file descriptor (fd) is
-	 * an open fd referring to a terminal
-	*/
-
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
+
+/**
+ * is_delim - checks if character is a delimeter
+ * @c: the char to check
+ * @delim: the delimeter string
+ * Return: 1 if true, 0 if false
+ */
+int is_delim(char c, char *delim)
+{
+	while (*delim)
+		if (*delim++ == c)
+			return (1);
+	return (0);
+}
+
+/**
+ *_isalpha - checks for alphabetic character
+ *@c: The character to input
+ *Return: 1 if c is alphabetic, 0 otherwise
+ */
+
+int _isalpha(int c)
+{
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else
+		return (0);
+}
+
 /**
  *_atoi - converts a string to an integer
  *@s: the string to be converted
