@@ -28,7 +28,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 		{
 			if ((*buf)[r - 1] == '\n')
 			{
-				(*buf)[r - 1] = '\0';
+				(*buf)[r - 1] = '\0'; /* remove trailing newline */
 				r--;
 			}
 			info->linecount_flag = 1;
@@ -88,6 +88,7 @@ ssize_t get_input(info_t *info)
 	*buf_p = buf; /* else not a chain, pass back buffer from _getline() */
 	return (r); /* return length of buffer from _getline() */
 }
+
 /**
  * read_buf - reads a buffer
  * @info: parameter struct
@@ -167,40 +168,3 @@ void sigintHandler(__attribute__((unused))int sig_num)
 	_puts("$ ");
 	_putchar(BUF_FLUSH);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

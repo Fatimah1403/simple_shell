@@ -32,6 +32,7 @@ list_t *add_node(list_t **head, const char *str, int num)
 	*head = new_head;
 	return (new_head);
 }
+
 /**
  * add_node_end - adds a node to the end of the list
  * @head: address of pointer to head node
@@ -72,6 +73,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 		*head = new_node;
 	return (new_node);
 }
+
 /**
  * print_list_str - prints only the str element of a list_t linked list
  * @h: pointer to first node
@@ -91,6 +93,7 @@ size_t print_list_str(const list_t *h)
 	}
 	return (i);
 }
+
 /**
  * delete_node_at_index - deletes node at given index
  * @head: address of pointer to first node
@@ -154,69 +157,4 @@ void free_list(list_t **head_ptr)
 	}
 	*head_ptr = NULL;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

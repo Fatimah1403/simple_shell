@@ -42,6 +42,7 @@ int hsh(info_t *info, char **av)
 	}
 	return (builtin_ret);
 }
+
 /**
  * find_builtin - finds a builtin command
  * @info: the parameter & return info struct
@@ -75,6 +76,7 @@ int find_builtin(info_t *info)
 		}
 	return (built_in_ret);
 }
+
 /**
  * find_cmd - finds a command in PATH
  * @info: the parameter & return info struct
