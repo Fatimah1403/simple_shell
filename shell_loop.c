@@ -75,4 +75,3 @@ void shell_loop(data_shell *datash)
 		}
 	}
 }
-
